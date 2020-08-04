@@ -87,7 +87,7 @@ const promptProject = portfolioData => {
                 name: 'confirmAddProject',
                 message: 'Would you like to enter another project?',
                 default: false 
-            }]
+            }])
             .then(projectData => {
                 portfolioData.projects.push(projectData);
                 if (projectData.confirmAddProject) {
@@ -96,11 +96,6 @@ const promptProject = portfolioData => {
                   return portfolioData;
                 };
               })
-    );
-    // // if there's no 'projets' array property, create one
-    // if (!portfolioData.projects) {
-    //     portfolioData.projects = [];
-    // };
 }
 
 promptUser()
