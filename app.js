@@ -14,9 +14,10 @@
 // printProfileData(profileDataArgs);
 
 //require fs (file system)
-// const fs = require('fs');
+const fs = require('fs');
+
 // require page template js file
-// const generatePage = require('./src/page-template.js');
+const generatePage = require('./src/page-template.js');
 
 // require inquire
 const inquirer = require('inquirer');
@@ -143,6 +144,13 @@ const promptProject = portfolioData => {
 promptUser()
 .then(promptProject)
 .then(portfolioData => {
+    const pageHTML = generatePage(portfolioData);
+
+    fs.writeFile('./index.html', pageHTML, err => {
+     if (err) throw new Error(err);
+
+     console.log('Page created! Check out index.htnl in this directory to see it!');
+    });
     console.log(portfolioData);
 });
 
